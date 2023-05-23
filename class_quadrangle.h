@@ -13,7 +13,5 @@ public:
 
     int get_lenght_side_d();
     int get_value_angle_D();
-    bool check();
-    void print_info();
-    void message_create();
+    void message() override;
 };

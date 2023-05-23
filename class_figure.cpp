@@ -1,22 +1,28 @@
 #include "class_figure.h"
-Figure::Figure() { sides_count = 0; name = "Фигура"; }
+#include "myException.h"
+Figure::Figure()
+{ 
+    sides_count = 0;
+    name = "Фигура";
+}
 
 Figure::Figure(int sides_count, std::string name)
 {
-    this->sides_count = sides_count;
-    this->name = name;
+   if (sides_count != 0) {
+       throw myException("Число сторон Фигуры не равно нулю!");
+    }
+    else
+    {
+        this->sides_count = sides_count;
+        this->name = name;
+        message();
+    }
 }
 
 std::string Figure::get_name() { return name; };
 int Figure::get_sides_count() { return sides_count; };
-bool Figure::check() { return 1; };
-void Figure::print_info() {
-    std::cout << get_name() << std::endl;
-    if (check() == 1) {
-        std::cout << "Правильная" << std::endl;
-    }
-    else {
-        std::cout << "Неправильная" << std::endl;
-    }
-    std::cout << "Количество сторон: " << get_sides_count() << std::endl << std::endl;
+void Figure::message() {
+    std::cout << "Название: " << get_name() << std::endl;
+    std::cout << "Статус: создана" << std::endl;
+    std::cout << "Число сторон: " << get_sides_count() << std::endl;
 };

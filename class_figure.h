@@ -10,6 +10,5 @@ public:
 
     std::string get_name();
     int get_sides_count();
-    bool check();
-    void print_info();
+    void virtual message();
 };

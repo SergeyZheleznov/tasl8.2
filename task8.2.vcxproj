@@ -134,6 +134,7 @@
     <ClCompile Include="class_rectangle1.cpp" />
     <ClCompile Include="class_right_triangle.cpp" />
     <ClCompile Include="class_triangle.cpp" />
+    <ClCompile Include="MyException.cpp" />
     <ClCompile Include="parallelogram.cpp" />
     <ClCompile Include="rhombus.cpp" />
     <ClCompile Include="square.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="class_right_triangle.h" />
     <ClInclude Include="class_triangle.h" />
     <ClInclude Include="class_parallelogram.h" />
+    <ClInclude Include="MyException.h" />
     <ClInclude Include="rhombus.h" />
     <ClInclude Include="square.h" />
   </ItemGroup>

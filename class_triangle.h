@@ -20,7 +20,5 @@ public:
     int get_value_angle_A();
     int get_value_angle_B();
     int get_value_angle_C();
-    bool check();
-    void print_info();
-    void message_create();
+    void message() override;
 };

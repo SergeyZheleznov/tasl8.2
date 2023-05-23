@@ -2,7 +2,7 @@
 #include "class_triangle.h"
 #include "class_quadrangle.h"
 #include "square.h"
-
+#include "myException.h"
 
 Square::Square()
 {
@@ -23,6 +23,9 @@ Square::Square(int sides_count, std::string name, int length_side_a, int length_
 {
     this->sides_count = sides_count;
     this->name = name;
+    if (sides_count != 4) {
+        throw myException("Число сторон не равно четырём");
+    }
     this->length_side_a = length_side_a;
     this->length_side_b = length_side_b;
     this->length_side_c = length_side_c;
@@ -31,30 +34,14 @@ Square::Square(int sides_count, std::string name, int length_side_a, int length_
     this->value_angle_B = value_angle_B;
     this->value_angle_C = value_angle_C;
     this->value_angle_D = value_angle_D;
-};
 
-void Square::message_create() {
-    int summ = get_value_angle_A() + get_value_angle_B() + get_value_angle_C() + get_value_angle_D();
-    
-    if (get_sides_count() != 4) {
-        throw std::runtime_error(" число сторон не равно 4");
-    }
-    else if (summ != 360) {
-        throw std::runtime_error(" сумма углов не равна 360");
-    }
-    else if ((get_lenght_side_a() != get_lenght_side_b()) || (get_lenght_side_a() != get_lenght_side_c()) || (get_lenght_side_a() != get_lenght_side_d()) || 
-        (get_lenght_side_b() != get_lenght_side_d() || (get_lenght_side_c() != get_lenght_side_d())))
-    {
-        throw std::runtime_error(" не все стороны равны");
+    if ((length_side_a != length_side_b) || (length_side_a != length_side_c) || (length_side_a != length_side_d)) {
+        throw myException("Не все стороны равны!");
     }
 
-    else if ((get_value_angle_A() != 90) || (get_value_angle_B() != 90) || (get_value_angle_C() != 90) || (get_value_angle_D() !=90)) {
-        throw std::runtime_error(" не углы равны 90");
+    if ((value_angle_A != 90) || (value_angle_B != 90) || (value_angle_C != 90) || (value_angle_D != 90)) {
+        throw myException("Не все углы равны 90 градусов!");
     }
 
-    else
-    {
-        std::cout << get_name() << " (стороны " << get_lenght_side_a() << ", " << get_lenght_side_b() << ", " << get_lenght_side_c() << "; " << get_lenght_side_d() << "; " <<
-            "углы " << get_value_angle_A() << " , " << get_value_angle_B() << " , " << get_value_angle_C() << " , " << get_value_angle_D() << ") создан" << std::endl;
-    }
+    message();
 };
